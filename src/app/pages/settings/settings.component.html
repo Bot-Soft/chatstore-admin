@@ -1,0 +1,53 @@
+<div>
+  <div class="row">
+    <div class="col-md-5">
+      <nb-card>
+        <nb-card-header>Development Setup</nb-card-header>
+        <nb-card-body>
+          Run the following commands in the command line:
+          <ol class="developer-setup">
+            <li><b>npm i -g botsoft </b></li>
+            Use npm to install BotSoft. Use the "-g" flag to install it globally, which makes BotSoft's command line
+            tool available.
+            <li><b>bs connect {{secret||"[SECRET]"}} {{botId||"[ID]"}} "{{name||"[NAME]"}}"</b></li>
+            Create a
+            <li><a href="https://m.me/{{botId}}" target="_blank">Test your {{name}} chatbot</a></li>
+            <li>Experiment with the code located in the <b>flow.json</b> file.</li>
+            Refer to the Facebook Messenger Platform <a href="https://developers.facebook.com/docs/messenger-platform/send-messages"
+              target="_blank">documentation</a>.
+            <li><b>bs deploy</b></li>
+            Update the {{name}} chatbot instantly.
+          </ol>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <label>ID</label>
+    </div>
+    <div class="col-md-10">
+      <input type="text" disabled size="50" value="{{botId}}">
+      <br />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <label>Name</label>
+    </div>
+    <div class="col-md-10">
+      <input type="text" disabled size="50" value="{{name}}">
+      <br />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <label>Secret</label>
+    </div>
+    <div class="col-md-10">
+      <input type="text" disabled size="50" value="{{secret}}">
+      <br />
+    </div>
+  </div>
+</div>
+<div style="margin-top: 40px;"><button class="btn btn-defualt btn-delete" (click)="delete()">Delete Chatbot</button></div>

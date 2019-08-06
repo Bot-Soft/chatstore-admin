@@ -1,0 +1,13 @@
+<ngx-blank-layout>
+  <content>
+    <div *ngFor="let textField of textFields" class="row">
+      <div class="col-md-2">
+        <label>{{textField.display_name}}</label>
+      </div>
+      <div class="col-md-10">
+        <img [src]="textField.value" height="auto" width="382"><br />
+        <input type="text" [name]="textField.name" size="42" [value]="textField.value">
+      </div>
+    </div>
+  </content>
+</ngx-blank-layout>

@@ -1,0 +1,11 @@
+<div>
+  <button class="btn btn-success btn-save" (click)="save()">Save</button>
+</div>
+<div *ngFor="let textField of textFields" class="row">
+  <div class="col-md-2">
+    <label>{{textField.display_name}}</label>
+  </div>
+  <div class="col-md-10">
+    <input type="text" [name]="textField.name" size="100" [value]="textField?.value" [ngModel]="textField?.value" (ngModelChange)="onModelChanged(textField, $event)" [placeholder]="textField?.placeholder">
+  </div>
+</div>

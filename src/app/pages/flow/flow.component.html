@@ -1,0 +1,27 @@
+<div>
+  <!-- <a href="#/bot/{{botId}}/category" class="btn btn-success btn-create">Create</a> -->
+  <button (click)="save()" class="btn btn-success btn-create">Save</button>
+  <button (click)="add()" class="btn btn-secondary btn-create">Add Block</button>
+</div>
+<div class="row">
+  <nb-tabset style="width: 100%;">
+    <nb-tab tabTitle="Design">
+      <div style="width: 100%;">
+        <div class="col-xxxl-12 col-md-12" *ngFor="let block of blocks; let idx = index">
+          <ngx-flow-card [steps]="block.steps" [title]="block.title" (titleChangedEvent)="titleChanged(idx, $event)" (moveDownBlockEvent)="moveDownBlock(idx)" (moveUpBlockEvent)="moveUpBlock(idx)" (messageEvent)="receiveDeleteMessage(idx)"></ngx-flow-card>
+        </div>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Source">
+      <div class="col-xxxl-12 col-md-12">
+        <nb-card size="small">
+          <nb-card-body>
+
+            <textarea style="width: 100%;" rows="40" placeholder="Text Area" class="form-control" [ngModel]="blocks | json"></textarea>
+
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</div>

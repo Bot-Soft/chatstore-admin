@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <span>Create Step</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <nb-card (click)="create('text')">
+        <div class="details">
+          <div class="title">Text</div>
+          <div class="status"></div>
+        </div>
+      </nb-card>
+    </div>
+
+    <div class="col-6">
+      <nb-card (click)="create('qr-text')">
+        <div class="details">
+          <div class="title">Text Quick Reply</div>
+          <div class="status">
+            <a target="_blank" href="https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#text">doc</a>
+          </div>
+        </div>
+      </nb-card>
+    </div>
+
+    <div class="col-6">
+      <nb-card (click)="create('qr-localtion')">
+        <div class="icon-container">
+          <div class="icon info">
+            <i class="ion-ios-location-outline"></i>
+          </div>
+        </div>
+        <div class="details">
+          <div class="title">Location Quick Reply</div>
+          <div class="status">
+            <a target="_blank" href="https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#locations">doc</a>
+          </div>
+        </div>
+      </nb-card>
+    </div>
+
+    <div class="col-6">
+      <nb-card (click)="create('qr-phonenumber')">
+        <div class="icon-container">
+          <div class="icon info">
+            <i class="ion-android-call"></i>
+          </div>
+        </div>
+        <div class="details">
+          <div class="title">User Phone Number Quick Reply</div>
+          <div class="status">
+            <a target="_blank" href="https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#userdata">doc</a>
+          </div>
+        </div>
+      </nb-card>
+    </div>
+
+    <div class="col-6">
+        <nb-card >
+          <div class="icon-container">
+            <div class="icon info">
+              <i class="ion-ios-email"></i>
+            </div>
+          </div>
+          <div class="details" (click)="create('qr-email')">
+            <div class="title">User Email Quick Reply</div>
+            <div class="status">
+              <a target="_blank" href="https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies#userdata">doc</a>
+            </div>
+          </div>
+        </nb-card>
+      </div>
+
+
+
+  </div>
+</div>
+
+<!-- <div class="modal-footer">
+  <button class="btn btn-md btn-success" (click)="create()">Create</button>
+</div> -->

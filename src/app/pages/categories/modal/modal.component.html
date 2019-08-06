@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <span>'🎉 Congratulations</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div>Your chatbot is created. Let's customize it!</div>
+  <br />
+  <div>
+    <span style="color: #3edc7e;">✔</span> Chatbot Created</div>
+  <div>
+    <span style="color: #3edc7e;">✔</span> Sample Data Added</div><br />
+    <div>Test your bot on <a href="https://m.me/{{pageId}}" target="_blank">https://m.me/{{pageId}}</a></div>
+    <div class="fb-send-to-messenger" messenger_app_id="498860363814397" [attr.page_id]="pageId" data-ref color="blue" size="large">
+      </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-md btn-success" (click)="closeModal()">Customize It</button>
+</div>

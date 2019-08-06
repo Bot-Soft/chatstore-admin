@@ -1,0 +1,96 @@
+@import '../../../@theme/styles/themes';
+@include nb-install-component() {
+  nb-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  nb-card {
+    height: auto !important;
+  }
+  nb-action {
+    font-size: 25px;
+    input {
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: #a09f9fe1 1px dashed;
+
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  .incard nb-card-header {
+    background-color: #f9f9f9;
+    width: auto;
+    padding: 3px;
+  }
+  i {
+    cursor: pointer;
+    color: #40dc7e;
+  }
+  i:hover {
+    color: #8fec8f;
+  }
+  .picture {
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-top-left-radius: nb-theme(card-border-radius);
+    border-top-right-radius: nb-theme(card-border-radius);
+    flex: 1;
+  }
+  .details {
+    padding: 1.25rem 1.25rem 0;
+    .title {
+      font-family: nb-theme(font-secondary);
+      font-weight: nb-theme(font-weight-bold);
+      color: nb-theme(color-fg-heading);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      @include nb-for-theme(cosmic) {
+        font-weight: nb-theme(font-weight-bolder);
+      }
+    }
+    .description {
+      text-align: justify;
+      color: nb-theme(color-fg-text);
+      font-weight: nb-theme(font-weight-light);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: calc(1rem * 8 * #{nb-theme(line-height)});
+    }
+    textarea {
+      margin-bottom: 20px;
+      resize: none;
+      border: 0; // margin-left: 105px;
+      height: auto;
+      overflow: auto;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  nb-card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75rem 0;
+    border: none;
+    a {
+      text-decoration: none;
+      color: nb-theme(color-fg);
+      &:hover {
+        color: nb-theme(color-fg-heading);
+      }
+      i {
+        font-size: 1.75rem;
+      }
+    }
+  }
+}

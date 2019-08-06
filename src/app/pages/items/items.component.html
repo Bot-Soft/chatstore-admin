@@ -1,0 +1,10 @@
+<div>
+  <!-- <a href="#/bot/{{botId}}/item{{categoryId?'?category_id=' + categoryId:''}}" class="btn btn-success btn-create">Create</a> -->
+  <button (click)="create()" class="btn btn-success btn-create">Create</button>
+</div>
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let item of items">
+    <ngx-items-card (messageEvent)="receiveDeleteMessage($event)" [item_id]="item?.id" [parent_id]="item?.parent_id"
+      [image]="item.image_url" [subtitle]="item.subtitle" [title]="item.title"></ngx-items-card>
+  </div>
+</div>

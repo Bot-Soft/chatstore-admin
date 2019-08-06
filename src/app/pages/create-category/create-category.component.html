@@ -1,0 +1,62 @@
+<div>
+  <button class="btn btn-success btn-save" (click)="create()">Save</button>
+  <a href="#/bot/{{botId}}/categories" class="btn btn-secondary btn-save">Cancel</a>
+</div>
+<div class="row" style="margin-left: -15px; padding-bottom: 130px;">
+  <div class="col-md-3" style="min-width: 370px;">
+    <nb-card size="small">
+      <nb-card-body>
+        <div *ngIf="category.image_url" class="picture" style.background-image="url({{category.image_url}})" style="height:200px;"></div>
+
+        <div class="details">
+          <div class="title">
+            {{category.title}}
+          </div>
+          <div class="description">
+            {{category.subtitle}}
+          </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <nb-actions size="medium" fullWidth>
+          <nb-action>
+            <a class="pointer">{{category.button_text}}</a>
+          </nb-action>
+        </nb-actions>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+  <div class="col-md-8">
+    <!-- <div class="row" *ngIf="category.id">
+  <div class="col-md-2">
+    <label>ID</label>
+  </div>
+  <div class="col-md-10">
+    <input class="disabled" type="text" size="100" [value]="category?.id || ''" disabled>
+  </div>
+</div> -->
+
+    <div class="col-md-10">
+      <small class="form-text">Image URL</small>
+      <input type="text" size="100" [ngModel]="category?.image_url" (ngModelChange)="category.image_url = $event" [value]="category?.image_url || ''">
+      <!-- <br />
+    <img *ngIf="category?.image_url" [src]="category?.image_url" height="auto" width="382"> -->
+    </div>
+    <div class="col-md-10 input-field">
+      <small class="form-text">Title</small>
+      <input type="text" size="100" [ngModel]="category?.title" (ngModelChange)="category.title = $event" [value]="category?.title  || ''">
+    </div>
+    <div class="col-md-10 input-field">
+      <small class="form-text">Subtitle</small>
+      <input type="text" size="100" [ngModel]="category?.subtitle" (ngModelChange)="category.subtitle = $event" [value]="category?.subtitle || ''">
+    </div>
+    <div class="col-md-10 input-field">
+      <small class="form-text">Order</small>
+      <input type="text" size="2" [ngModel]="category?.order" (ngModelChange)="category.order = $event" [value]="category?.order || ''">
+    </div>
+    <div class="col-md-10 input-field">
+      <small class="form-text">Call To Action</small>
+      <input type="text" size="100" [ngModel]="category?.button_text" (ngModelChange)="category.button_text = $event" [value]="category?.button_text || ''">
+    </div>
+  </div>
+</div>

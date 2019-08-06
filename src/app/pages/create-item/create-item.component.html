@@ -1,0 +1,108 @@
+<div>
+  <button class="btn btn-success btn-save" (click)="save()">Save</button>
+  <a href="#/bot/{{botId}}/items{{parent_id ? '?parent_id=' + parent_id: ''}}" class="btn btn-secondary btn-save">Cancel</a>
+</div>
+<div class="row" style="margin-left: -15px; padding-bottom: 130px;">
+  <div class="col-md-3" style="min-width: 370px;">
+    <nb-card size="medium">
+      <nb-card-body>
+        <div *ngIf="item.image_url" class="picture" style.background-image="url({{item?.image_url}})" style="height:200px;"></div>
+
+        <div class="details">
+          <div class="title">
+            {{item.title}}
+          </div>
+          <div class="description">
+            {{item.subtitle}}
+          </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer *ngFor="let button of item.buttons" style="height: 45px;">
+        <nb-actions size="medium" fullWidth>
+          <nb-action>
+            <a class="pointer">{{ button?.title ? button?.title : (button?.type == 'element_share' ? 'Share' :
+              'Button') }}</a>
+          </nb-action>
+        </nb-actions>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+  <div class="col-md-8">
+    <div class="col-md-10">
+      <nb-card>
+        <nb-card-header>Properties</nb-card-header>
+        <nb-card-body [style.overflow]="'hidden'">
+
+          <div class="property-row form-group row">
+            <label class="col-sm-2 col-form-label" for="inputTitle">title</label>
+            <div class="col-sm-10"><input class="form-control" id="inputTitle" type="text" size="100" [ngModel]="item?.title"
+                (ngModelChange)="item.title = $event" [value]="item?.title  || ''"></div>
+          </div>
+
+          <div class="form-group row property-row">
+            <label class="col-sm-2 col-form-label" for="inputSubtitle">subtitle</label>
+            <div class="col-sm-10"><input class="form-control" id="inputSubtitle" type="text" size="100" [ngModel]="item?.subtitle"
+                (ngModelChange)="item.subtitle = $event" [value]="item?.subtitle || ''"></div>
+          </div>
+
+          <div class="form-group row property-row">
+            <label class="col-sm-2 col-form-label" for="inputImageUrl">image_url</label>
+            <div class="col-sm-10"><input class="form-control" id="inputImageUrl" type="text" size="100" [ngModel]="item?.image_url"
+                (ngModelChange)="item.image_url = $event" [value]="item?.image_url || ''"></div>
+          </div>
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-md-10">
+      <nb-card>
+        <nb-card-header>Default Action</nb-card-header>
+        <nb-card-body [style.overflow]="'hidden'">
+
+          <div class="form-group row property-row">
+            <label class="col-sm-2 col-form-label" for="inputDefaultActionUrl">url</label>
+            <div class="col-sm-10"><input class="form-control" id="inputDefaultActionUrl" type="text" size="100"
+                [ngModel]="item?.default_action.url" (ngModelChange)="item.default_action.url = $event" [value]="item?.default_action.url || ''"></div>
+          </div>
+
+          <div class="form-group row property-row">
+            <label class="col-sm-2 col-form-label" for="inputDefaultActionWHR">webview_height</label>
+            <div class="col-sm-10">
+              <label class="custom-control custom-radio"><input class="custom-control-input" name="customRadio" type="radio"><span
+                  class="custom-control-indicator"></span><span class="custom-control-description">compact</span></label>
+              <label class="custom-control custom-radio"><input checked="" class="custom-control-input" name="customRadio"
+                  type="radio"><span class="custom-control-indicator"></span><span class="custom-control-description">tall</span></label>
+              <label class="custom-control custom-radio"><input class="custom-control-input" name="customRadio" type="radio"><span
+                  class="custom-control-indicator"></span><span class="custom-control-description">full</span></label>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-md-10">
+      <nb-card>
+        <nb-card-header>
+          <nb-actions fullwidth="" size="medium" class="medium full-width">
+            <nb-action>Buttons</nb-action>
+            <nb-action *ngIf="item.buttons.length < 3" class="pointer" style="color: #9aa4ad;" (click)="addButton();"><i class="nb-plus"></i>Add New</nb-action>
+          </nb-actions>
+        </nb-card-header>
+        <nb-card-body [style.overflow]="'hidden'">
+          <div class="form-group row property-row header">
+            <div class="col-sm-5 col-form-label">Type</div>
+            <div class="col-sm-5 col-form-label">Title</div>
+            <div class="col-sm-2 col-form-label">Actions</div>
+          </div>
+          <div *ngFor="let button of item.buttons; let idx = index" class="form-group row property-row-text">
+            <div class="col-sm-5 col-form-label">{{button.type}}</div>
+            <div class="col-sm-5 col-form-label">{{button.title}}</div>
+            <div class="col-sm-2 col-form-label"><i class="nb-compose pointer" (click)="openButtonModal(button);"></i><i class="nb-trash pointer" (click)="deleteButton(button);"></i><i *ngIf="idx+1 < item.buttons.length" (click)="moveButtonDown(idx)" class="nb-arrow-thin-down pointer"></i><i *ngIf="idx > 0" (click)="moveButtonUp(idx)" class="nb-arrow-thin-up pointer"></i></div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+  </div>
+</div>

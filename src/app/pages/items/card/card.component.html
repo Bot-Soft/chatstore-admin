@@ -1,0 +1,30 @@
+<nb-card size="small">
+  <nb-card-body>
+    <div class="picture" style.background-image="url({{image}})"></div>
+
+    <div class="details">
+      <div class="title">
+        {{title}}
+      </div>
+      <div class="description">
+        {{subtitle}}
+      </div>
+    </div>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <nb-actions size="medium" fullWidth>
+      <!-- <nb-action title="Sell Rate">
+        <div class="btn btn-{{status}}">
+          {{sellrate}}
+        </div>
+      </nb-action> -->
+      <nb-action>
+          <a href="#/bot/{{botId}}/item?id={{item_id}}">Edit</a>
+        </nb-action>
+      <nb-action>
+          <a class="pointer" (click)="delete()">Delete</a>
+      </nb-action>
+    </nb-actions>
+  </nb-card-footer>
+</nb-card>

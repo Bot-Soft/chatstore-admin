@@ -1,0 +1,10 @@
+<div>
+    <!-- <a href="#/bot/{{botId}}/category" class="btn btn-success btn-create">Create</a> -->
+    <button (click)="create()" class="btn btn-success btn-create">Create</button>
+</div>
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let category of categories">
+    <ngx-categories-card (messageEvent)="receiveDeleteMessage($event)" [image]="category.image_url"
+      [subtitle]="category.subtitle" [title]="category.title" [category_id]="category.id"></ngx-categories-card>
+  </div>
+</div>

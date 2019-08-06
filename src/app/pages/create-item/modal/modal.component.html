@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <span>{{action}}</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row property-row">
+    <label class="col-sm-2 col-form-label" for="button-type">Type</label>
+    <div class="col-sm-10" ngbDropdown>
+      <button type="button" style="padding: 0.75rem 1.125rem;" class="btn btn-sm btn-outline-info col-md-6"
+        ngbDropdownToggle>{{getButtonTypeDisplayValue(button)}}
+      </button>
+      <ul ngbDropdownMenu id="button-type" class="dropdown-menu">
+        <li class="dropdown-item pointer" (click)="onChangeButtonType('web_url');">URL</li>
+        <li class="dropdown-item pointer" (click)="onChangeButtonType('phone_number');">Phone Call</li>
+        <li class="dropdown-item pointer" (click)="onChangeButtonType('element_share');">Share</li>
+        <li class="dropdown-item pointer" (click)="onChangeButtonType('postback');">Go To</li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="button.type == 'web_url' || button.type == 'postback' || button.type == 'phone_number'" class="row property-row">
+    <label class="col-sm-2 col-form-label" for="btn-title">Title</label>
+    <div class="col-sm-10"><input id="btn-title" type="text" class="col-md-6 form-control" size="100" [ngModel]="button?.title"
+        (ngModelChange)="button.title = $event" [value]="button?.title || ''" placeholder="Title"></div>
+  </div>
+
+  <div *ngIf="button.type == 'web_url'" class="row property-row">
+    <label class="col-sm-2 col-form-label" for="url">URL</label>
+    <div class="col-sm-10"><input id="url" type="text" class="col-md-6 form-control" size="100" [ngModel]="button?.url"
+        (ngModelChange)="button.url = $event" [value]="button?.url || ''" placeholder="http://yoursite.com"></div>
+  </div>
+
+  <div *ngIf="button.type == 'phone_number'" class="row property-row">
+    <label class="col-sm-2 col-form-label" for="phone-number">Number</label>
+    <div class="col-sm-10"><input id="phone-number" type="text" class="col-md-6 form-control" size="100" [ngModel]="button?.payload"
+        (ngModelChange)="button.payload = $event" [value]="button?.payload || ''" placeholder="+0123456789"></div>
+  </div>
+
+  <div *ngIf="button.type == 'element_share'" class="row property-row">
+    <label class="col-sm-10 col-form-label">Share with Facebook friends.</label>
+  </div>
+
+  <div *ngIf="button.type == 'postback'" class="row property-row">
+    <label class="col-sm-2 col-form-label" for="go-to-message">Message Name</label>
+    <div class="col-sm-10"><input id="go-to-message" type="text" class="col-md-6 form-control" size="100" [ngModel]="button?.payload"
+        (ngModelChange)="button.payload = $event" [value]="button?.payload || ''"></div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-md btn-success" (click)="addButton()">{{saveButtonName}}</button>
+</div>
