@@ -57,7 +57,7 @@
     "d3": "4.8.0",
     "font-awesome": "4.7.0",
     "intl": "1.2.5",
-    "ionicons": "4.4.7",
+    "ionicons": "^4.6.2",
     "jsoneditor": "^5.14.1",
     "leaflet": "1.0.3",
     "nebular-icons": "1.0.6",

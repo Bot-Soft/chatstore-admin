@@ -4,11 +4,11 @@
       <i class="nb-menu"></i>
     </a>
     <div class="logo">
-      <a href="/#/pages"><img src="https://bot-soft.github.io/www/images/logo.png" style="min-width:186px; width: 50%; height: auto;" /></a>
+      <a href="/#/pages"><img src="assets/images/admin-logo.png" style="min-width:186px; width: 50%; height: auto;" /></a>
     </div>
   </div>
 </div>
-<nb-user *ngIf="botInfo?.id" style="width: 30%;" [name]="botInfo?.name" picture="http://graph.facebook.com/{{ botInfo?.id }}/picture" size="large"></nb-user>
+<nb-user *ngIf="botInfo?.id" style="width: 30%;" [name]="botInfo?.name" picture="https://graph.facebook.com/{{ botInfo?.id }}/picture" size="large"></nb-user>
 <nb-actions size="medium" class="header-container" [class.right]="position === 'normal'" [class.left]="position === 'inverse'">
   <nb-action>
     <nb-user [menu]="userMenu" [name]="user?.name" [picture]="user?.picture" size="large"></nb-user>

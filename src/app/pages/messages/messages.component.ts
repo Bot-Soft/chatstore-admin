@@ -45,7 +45,7 @@ export class MessagesComponent {
           .map(response => response.json())
           .subscribe(res => {
             let allDataFields = [];
-            let dataFields = res.blocks.data;
+            let dataFields = res.blocks.template.data;
             for (var key in dataFields) {
               if (dataFields.hasOwnProperty(key)) {
                 dataFields[key].name = key;

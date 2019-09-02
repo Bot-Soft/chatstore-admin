@@ -6,6 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { FbPagesService } from './@core/data/fbpages.service';
+import config from './config/config.json';
 
 declare let window: any;
 declare let FB: any;
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private analytics: AnalyticsService, private fbPagesService: FbPagesService) {
 
     FB.init({
-      appId: "498860363814397",
+      appId: config.fbAppId,
       autoLogAppEvents: true,
       xfbml: true,
       version: "v2.11",

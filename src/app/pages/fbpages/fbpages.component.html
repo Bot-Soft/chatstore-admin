@@ -10,14 +10,14 @@
               />
             </div> -->
             <span *ngIf="templateId">Connect Facebook Page</span>
-            <span *ngIf="!templateId">Configure Your Bot <div style="font-weight: 200; font-size: 15px;"><a href="https://botsoft.ai/#botsoft-menu-all">or create a new one</a></div></span>
+            <span *ngIf="!templateId">Configure Your Bot <div style="font-weight: 200; font-size: 15px;"><a href="/#/pages?template_id=b118d06f-28ba-4a33-8e44-ba56ce575686">or create a new one</a></div></span>
           </div>
        
         </nb-card-header>
         <nb-card-body>
           <div *ngIf="fbpages?.length == 0" class="contact">No Facebook Pages here! <a target="_blank" href="https://www.facebook.com/pages/create/">Create Facebook Page.</a></div>
           <div class="contact" *ngFor="let fbpage of fbpages">
-            <nb-user [name]="fbpage.name" [title]="fbpage.category" picture="http://graph.facebook.com/{{ fbpage.id }}/picture" size="large"></nb-user>
+            <nb-user [name]="fbpage.name" [title]="fbpage.category" picture="https://graph.facebook.com/{{ fbpage.id }}/picture" size="large"></nb-user>
             <a *ngIf="!fbpage.hasBotInstalled" class="action" style="cursor: pointer;" (click)="setup(fbpage.id, fbpage.name, fbpage.access_token)">
               <i class="i-contact ion-ios-download-outline"></i>Connect</a>
             <a *ngIf="fbpage.hasBotInstalled" class="action" href="#/bot/{{fbpage.id}}">

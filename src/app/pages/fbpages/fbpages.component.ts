@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 declare let window: any;
 declare let FB: any;
 declare let mixpanel: any;
-declare let ga:any;
+declare let ga: any;
 
 @Component({
   selector: 'ngx-fbpages',
@@ -29,7 +29,7 @@ export class FbPagesComponent implements OnInit, OnDestroy {
   constructor(private themeService: NbThemeService,
     private breakpointService: NbMediaBreakpointsService,
     private fbPagesService: FbPagesService,
-    private http: Http,private route: ActivatedRoute,
+    private http: Http, private route: ActivatedRoute,
     private spinnerService: NbSpinnerService, private router: Router) {
 
     this.breakpoints = this.breakpointService.getBreakpointsMap();
@@ -38,11 +38,11 @@ export class FbPagesComponent implements OnInit, OnDestroy {
         this.breakpoint = newValue;
       });
 
-      this.templateId = this.route.snapshot.queryParams.template_id;
+    this.templateId = this.route.snapshot.queryParams.template_id;
 
-      // if(!this.templateId){
-      //   window.location.replace("https://botsoft.ai/#botsoft-menu-all");
-      // }
+    // if(!this.templateId){
+    //   window.location.replace("https://botsoft.ai/#botsoft-menu-all");
+    // }
   }
 
   ngOnInit() {
@@ -61,19 +61,21 @@ export class FbPagesComponent implements OnInit, OnDestroy {
 
         that.http.get(config.url + '/pages?access_token=' + accessToken)
           .map(response => response.json()).subscribe(res => {
-         
-            that.fbpages = res.filter((element, index, array)=>{
-              if(that.templateId){
-                return !element.hasBotInstalled;
-              }
-              else {
-                return element.hasBotInstalled;
-              }
-            });
-            
+
+            if (res.filter) {
+              that.fbpages = res.filter((element, index, array) => {
+                if (that.templateId) {
+                  return !element.hasBotInstalled;
+                }
+                else {
+                  return element.hasBotInstalled;
+                }
+              });
+            }
+
           }
           );
-          ga("send", "pageview", "/admin/fbpages-loaded");
+        ga("send", "pageview", "/admin/fbpages-loaded");
 
 
       } else if (response.status === "not_authorized") {
@@ -94,7 +96,7 @@ export class FbPagesComponent implements OnInit, OnDestroy {
 
       let endpoint = config.url + '/setup';
 
-      if(this.templateId){
+      if (this.templateId) {
         endpoint += '?template_id=' + this.templateId;
       }
 
@@ -115,7 +117,7 @@ export class FbPagesComponent implements OnInit, OnDestroy {
           err => {
             reject();
           }
-          );
+        );
       });
     }));
 
@@ -125,5 +127,5 @@ export class FbPagesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.themeSubscription.unsubscribe();
   }
-  
+
 }

@@ -34,19 +34,19 @@
         <nb-card-body [style.overflow]="'hidden'">
 
           <div class="property-row form-group row">
-            <label class="col-sm-2 col-form-label" for="inputTitle">title</label>
+            <label class="col-sm-2 col-form-label" for="inputTitle">Title</label>
             <div class="col-sm-10"><input class="form-control" id="inputTitle" type="text" size="100" [ngModel]="item?.title"
                 (ngModelChange)="item.title = $event" [value]="item?.title  || ''"></div>
           </div>
 
           <div class="form-group row property-row">
-            <label class="col-sm-2 col-form-label" for="inputSubtitle">subtitle</label>
+            <label class="col-sm-2 col-form-label" for="inputSubtitle">Subtitle</label>
             <div class="col-sm-10"><input class="form-control" id="inputSubtitle" type="text" size="100" [ngModel]="item?.subtitle"
                 (ngModelChange)="item.subtitle = $event" [value]="item?.subtitle || ''"></div>
           </div>
 
           <div class="form-group row property-row">
-            <label class="col-sm-2 col-form-label" for="inputImageUrl">image_url</label>
+            <label class="col-sm-2 col-form-label" for="inputImageUrl">Image URL</label>
             <div class="col-sm-10"><input class="form-control" id="inputImageUrl" type="text" size="100" [ngModel]="item?.image_url"
                 (ngModelChange)="item.image_url = $event" [value]="item?.image_url || ''"></div>
           </div>
@@ -55,19 +55,19 @@
       </nb-card>
     </div>
 
-    <div class="col-md-10">
+    <!-- <div class="col-md-10">
       <nb-card>
         <nb-card-header>Default Action</nb-card-header>
         <nb-card-body [style.overflow]="'hidden'">
 
-          <div class="form-group row property-row">
+          <div *ngIf="item.default_action" class="form-group row property-row">
             <label class="col-sm-2 col-form-label" for="inputDefaultActionUrl">url</label>
             <div class="col-sm-10"><input class="form-control" id="inputDefaultActionUrl" type="text" size="100"
                 [ngModel]="item?.default_action.url" (ngModelChange)="item.default_action.url = $event" [value]="item?.default_action.url || ''"></div>
           </div>
 
           <div class="form-group row property-row">
-            <label class="col-sm-2 col-form-label" for="inputDefaultActionWHR">webview_height</label>
+            <label class="col-sm-2 col-form-label" for="inputDefaultActionWHR">Browser size</label>
             <div class="col-sm-10">
               <label class="custom-control custom-radio"><input class="custom-control-input" name="customRadio" type="radio"><span
                   class="custom-control-indicator"></span><span class="custom-control-description">compact</span></label>
@@ -79,7 +79,7 @@
           </div>
         </nb-card-body>
       </nb-card>
-    </div>
+    </div> -->
 
     <div class="col-md-10">
       <nb-card>
@@ -96,7 +96,7 @@
             <div class="col-sm-2 col-form-label">Actions</div>
           </div>
           <div *ngFor="let button of item.buttons; let idx = index" class="form-group row property-row-text">
-            <div class="col-sm-5 col-form-label">{{button.type}}</div>
+            <div class="col-sm-5 col-form-label">{{getButtonTypeDisplayValue(button)}}</div>
             <div class="col-sm-5 col-form-label">{{button.title}}</div>
             <div class="col-sm-2 col-form-label"><i class="nb-compose pointer" (click)="openButtonModal(button);"></i><i class="nb-trash pointer" (click)="deleteButton(button);"></i><i *ngIf="idx+1 < item.buttons.length" (click)="moveButtonDown(idx)" class="nb-arrow-thin-down pointer"></i><i *ngIf="idx > 0" (click)="moveButtonUp(idx)" class="nb-arrow-thin-up pointer"></i></div>
           </div>

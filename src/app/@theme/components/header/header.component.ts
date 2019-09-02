@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
         // and signed request each expire
         FB.api("/me", (response) => {
           that.user.name = response.name;
-          that.user.picture = "http://graph.facebook.com/" + response.id + "/picture?type=square"
+          that.user.picture = "https://graph.facebook.com/" + response.id + "/picture?type=square"
         });
 
         let accessToken = response.authResponse.accessToken;
