@@ -108,11 +108,10 @@ export class FbPagesComponent implements OnInit, OnDestroy {
           name: pageName
         }).subscribe(
           res => {
-            debugger;
             resolve();
             mixpanel.track("successfully created");
             mixpanel.track("successfully created " + this.templateId);
-            window.location.replace("http://localhost:4000/#get-started?name=&code=");
+            window.location.replace("#/bot/" + pageId + "/settings");
           },
           err => {
             reject();
